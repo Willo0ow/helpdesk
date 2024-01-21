@@ -35,4 +35,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::group(['middleware' => ['can:Manage permissions']], function () {
+    Route::get('/settings/permissions', function () {
+        return Inertia::render('Settings/Permissions/Permissions');
+    })->name('settings.permissions');
+
+    Route::get('/settings/permissions/create', function () {
+        return Inertia::render('Settings/Permissions/CreatePermission');
+    })->name('settings.permissions.create');
+});
+
 require __DIR__.'/auth.php';
