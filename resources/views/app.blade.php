@@ -16,6 +16,8 @@
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
+    <v-app>
         @inertia
+    </v-app>
     </body>
 </html>
